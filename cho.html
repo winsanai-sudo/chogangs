@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHO GANG S: GEOMETRY THE GENESIS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        .break-keep { word-break: keep-all; }
+
+        /* Mouse Glow Effect */
+        #mouse-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 30;
+            background: radial-gradient(600px circle at var(--x, 0) var(--y, 0), rgba(29, 78, 216, 0.15), transparent 80%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Animations */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Button Gradient Animation */
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+            background: #0f172a;
+            padding: 2px;
+            border-radius: 9999px;
+        }
+        .btn-shimmer::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 90deg at 50%_50%, #E2E8F0 0%, #3949AB 50%, #E2E8F0 100%);
+            animation: spin-slow 3s linear infinite;
+        }
+        .btn-content {
+            position: relative;
+            background: #020617;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem 3.5rem;
+            width: 100%;
+            height: 100%;
+            transition: background 0.3s;
+        }
+        .btn-shimmer:hover .btn-content {
+            background: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Interactive Mouse Glow -->
+    <div id="mouse-glow"></div>
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div class="absolute top-[10%] left-[15%] w-64 h-64 border border-blue-500/20 rounded-full animate-spin-slow"></div>
+        <div class="absolute top-[40%] right-[10%] w-96 h-96 border border-purple-500/10 rotate-45 animate-pulse"></div>
+        
+        <svg class="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="0.5" />
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto text-center reveal active">
+            <div class="inline-flex items-center gap-2 px-5 py-2 mb-8 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-cyan-400 text-xs font-bold tracking-[0.3em] uppercase">
+                <i class="fas fa-sparkles"></i>
+                CHO GANG S Special Project
+            </div>
+            
+            <h1 class="text-6xl sm:text-8xl md:text-9xl font-black mb-10 leading-[0.9] tracking-tighter italic break-keep">
+                GEOMETRY <br />
+                <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                    THE GENESIS
+                </span>
+            </h1>
+            
+            <p class="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-light break-keep px-4">
+                "기하가 처음이라 두려우신가요?" <br class="hidden md:block" />
+                역대급 능력자 3인과 함께라면, 당신의 기하학적 사고는 
+                <span class="block mt-4 text-white font-semibold italic underline decoration-cyan-500 decoration-2 underline-offset-8">
+                    이전과 완전히 달라질 것입니다.
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Speaker Section -->
+    <section class="py-24 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-baseline justify-between mb-20 gap-4 border-b border-white/10 pb-8 reveal">
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter uppercase italic">
+                    The <span class="text-cyan-500">Legendary</span> Trio
+                </h2>
+                <p class="text-slate-500 font-medium tracking-widest text-sm uppercase">Curated by CHO GANG S</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-10">
+                <!-- Master A -->
+                <div class="reveal group relative p-10 rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-sm hover:border-white/20 transition-all duration-700 hover:-translate-y-4 overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-[80px] opacity-20 group-hover:opacity-40 bg-blue-500/20 transition-opacity"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-1.5 mb-8 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"></div>
+                        <span class="block text-xs font-bold text-cyan-400 mb-3 uppercase tracking-[0.2em]">기하의 정점</span>
+                        <h3 class="text-4xl font-black mb-6">Master A</h3>
+                        <p class="text-slate-400 leading-relaxed break-keep">수만 명의 제자를 배출한 기하학의 전설, 복잡한 증명을 단 한 줄의 직관으로 풀어내는 마법사.</p>
+                    </div>
+                    <div class="absolute bottom-6 right-8 text-white/5 font-black text-7xl select-none group-hover:text-white/10">01</div>
+                </div>
+
+                <!-- Master B -->
+                <div class="reveal group relative p-10 rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-sm hover:border-white/20 transition-all duration-700 hover:-translate-y-4 overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-[80px] opacity-20 group-hover:opacity-40 bg-purple-500/20 transition-opacity"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-1.5 mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-400"></div>
+                        <span class="block text-xs font-bold text-cyan-400 mb-3 uppercase tracking-[0.2em]">구조의 설계자</span>
+                        <h3 class="text-4xl font-black mb-6">Master B</h3>
+                        <p class="text-slate-400 leading-relaxed break-keep">공간도형의 본질을 꿰뚫는 분석력, 초보자도 5분 만에 기하의 매력에 빠지게 만드는 스토리텔러.</p>
+                    </div>
+                    <div class="absolute bottom-6 right-8 text-white/5 font-black text-7xl select-none group-hover:text-white/10">02</div>
+                </div>
+
+                <!-- Master C -->
+                <div class="reveal group relative p-10 rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-sm hover:border-white/20 transition-all duration-700 hover:-translate-y-4 overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-[80px] opacity-20 group-hover:opacity-40 bg-amber-500/20 transition-opacity"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-1.5 mb-8 rounded-full bg-gradient-to-r from-amber-500 to-orange-400"></div>
+                        <span class="block text-xs font-bold text-cyan-400 mb-3 uppercase tracking-[0.2em]">해석의 천재</span>
+                        <h3 class="text-4xl font-black mb-6">Master C</h3>
+                        <p class="text-slate-400 leading-relaxed break-keep">기하를 대수적으로 넘나드는 사고의 유연성. 수능 기하의 새로운 패러다임을 제시합니다.</p>
+                    </div>
+                    <div class="absolute bottom-6 right-8 text-white/5 font-black text-7xl select-none group-hover:text-white/10">03</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="py-32 px-6">
+        <div class="max-w-6xl mx-auto bg-white text-slate-950 rounded-[3.5rem] overflow-hidden shadow-2xl reveal">
+            <div class="grid lg:grid-cols-2">
+                <div class="p-12 md:p-20">
+                    <h2 class="text-4xl md:text-6xl font-black mb-10 leading-[1.1] break-keep tracking-tight">
+                        기하학의 본질, <br />
+                        누구에게나 <br />
+                        <span class="text-blue-600 italic">공평하게 쉽도록.</span>
+                    </h2>
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-5 group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-lg font-bold text-slate-800 break-keep">기하를 처음 공부하는 초보 선생님도 완벽 적응</span>
+                        </div>
+                        <div class="flex items-center gap-5 group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-lg font-bold text-slate-800 break-keep">복잡한 작도 없이도 꿰뚫어 보는 직관의 힘</span>
+                        </div>
+                        <div class="flex items-center gap-5 group">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <span class="text-lg font-bold text-slate-800 break-keep">3인의 마스터가 공동 집필한 핵심 커리큘럼</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 relative min-h-[400px] flex items-center justify-center border-l border-slate-200">
+                    <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 30px 30px;"></div>
+                    <div class="relative z-10 text-center scale-110">
+                        <i class="fas fa-book-open text-7xl text-blue-600 mb-8"></i>
+                        <h4 class="text-2xl font-black italic tracking-tighter mb-2">GEOMETRIC PARADIGM</h4>
+                        <p class="text-slate-500 font-bold tracking-widest text-xs uppercase">Research Archive / 50 Years</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info & CTA -->
+    <section class="py-24 px-6 relative">
+        <div class="max-w-5xl mx-auto bg-gradient-to-b from-slate-900 to-slate-950 border border-white/10 p-10 md:p-20 rounded-[4rem] text-center relative overflow-hidden shadow-2xl reveal">
+            <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
+            
+            <h2 class="text-3xl md:text-5xl font-black mb-16 italic uppercase tracking-tighter">
+                <span class="text-cyan-500">Study</span> Registration
+            </h2>
+            
+            <div class="grid sm:grid-cols-2 gap-10 md:gap-16 mb-20 text-left">
+                <div class="flex flex-col gap-4 p-6 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <div class="text-cyan-400 group-hover:scale-110 transition-transform"><i class="fas fa-calendar-alt text-3xl"></i></div>
+                    <div>
+                        <p class="text-[10px] text-slate-500 font-black tracking-[0.3em] mb-1 uppercase">Schedule</p>
+                        <p class="text-xl font-bold tracking-tight">2026. 03. 02 OPEN</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4 p-6 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <div class="text-purple-400 group-hover:scale-110 transition-transform"><i class="fas fa-map-marker-alt text-3xl"></i></div>
+                    <div>
+                        <p class="text-[10px] text-slate-500 font-black tracking-[0.3em] mb-1 uppercase">Location</p>
+                        <p class="text-xl font-bold tracking-tight">CHO GANG S Lounge (Online)</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4 p-6 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <div class="text-pink-400 group-hover:scale-110 transition-transform"><i class="fas fa-users text-3xl"></i></div>
+                    <div>
+                        <p class="text-[10px] text-slate-500 font-black tracking-[0.3em] mb-1 uppercase">Capacity</p>
+                        <p class="text-xl font-bold tracking-tight">Limited to 50 Seats</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4 p-6 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <div class="text-amber-400 group-hover:scale-110 transition-transform"><i class="fas fa-star text-3xl"></i></div>
+                    <div>
+                        <p class="text-[10px] text-slate-500 font-black tracking-[0.3em] mb-1 uppercase">Benefits</p>
+                        <p class="text-xl font-bold tracking-tight">Master's Secret Note</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="flex justify-center">
+                <button onclick="window.open('https://open.kakao.com/o/sF2NtHrh', '_blank')" class="btn-shimmer cursor-pointer focus:outline-none">
+                    <div class="btn-content">
+                        <span class="flex items-center gap-4 italic tracking-widest uppercase text-white font-black text-xl">
+                            Join the Legend <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </button>
+            </div>
+            
+            <p class="mt-10 text-slate-500 text-xs font-bold tracking-[0.2em] uppercase">
+                * Exclusive for CHO GANG S Members Only
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-3xl font-black italic tracking-tighter opacity-20 mb-4 uppercase">
+                CHO GANG S DESIGN LAB
+            </div>
+            <p class="text-slate-600 text-xs font-medium tracking-[0.4em] uppercase">
+                &copy; 2026 GEOMETRY RESEARCH CENTER. ALL RIGHTS RESERVED.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mouse Tracking Effect
+        const glow = document.getElementById('mouse-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.opacity = '1';
+            glow.style.setProperty('--x', e.clientX + 'px');
+            glow.style.setProperty('--y', e.clientY + 'px');
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Initial check
+        reveal();
+    </script>
+</body>
+</html>
